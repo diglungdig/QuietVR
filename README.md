@@ -1,2 +1,2 @@
-# Space-of-Pan
+# QuietVR
 A Quiet Place in VR
