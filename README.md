@@ -78,9 +78,30 @@ The following is a full list of credits:
 2. [low poly space ship by chrisonciuconcepts(licensed under CC Attribution)](https://sketchfab.com/models/587941c9c11742c6b82dfb99e7b210b9)
 3. [Flamingo by ryemartin(licensed under CC Attribution)](https://sketchfab.com/models/237fc4e8ca004c83ae20a1db08e2e661#)
 4. [[3D Printable] Bricktown Low-Poly Collection #6 by Y3DS(licensed under CC Attribution)](https://sketchfab.com/models/a73486c6e6a640dc856ff6624ffeae97)
-5. 
+
+Various 3D model assets from Unity asset store were also used during the development of this project.
 
 ## Artistic Design and Code Structure
+
+### Artisitic Design
+
+The artistic design of QuietVR follows the code of minimalism. The 3D assets that exist in the game are mostly of low polygon counts.
+
+The post processing techniques that are used in game are [sun shafts](https://docs.unity3d.com/550/Documentation/Manual/script-SunShafts.html), [bloom](https://docs.unity3d.com/550/Documentation/Manual/script-Bloom.html), and [color grading](https://docs.unity3d.com/Manual/PostProcessing-ColorGrading.html).
+
+QuietVR uses Unity's standard shader to create fade in/out effect on objects in game.
+
+### Scripts
+
+QuietVR's core behaviors are implemented in Quiet.cs, ObjectManager.cs and RoomObject.cs three classes.  
+
+Quiet.cs communicates with Lasp and gives signal to ObjectManager. ObjectManager receives the signal and instantiate/pooling 3D objects accordingly. RoomObject.cs controls the rotation of objects.
+
+The visual effect of audio reactive white circle is implemented in VoiceRipple.cs.
+
+These classes can be found in Asset/-Scripts folder.
+
+Note: Quite a lot of these scripts are not well documented. Further documentation will be added as this project gets its update later on.
 
 ## Future Roadmap and Possible Expansion
 
