@@ -62,12 +62,28 @@ Current build provides three categories of objects:
 
 3. **Animated creature**, which requires 30+ secs of continuous sound to trigger :) 
 
-### Additional commend
+### Additional Commend
+
 To exit the game, press ESC on keyboard.
 
+## Credits and Acknowledgement
 
-## Credit and Acknowledgement
+Currently, QuietVR's core functionality of audio input processing relies on the famous Japanese visualization artist and Unity engineer Keijiro Takahashi's [Lasp](https://github.com/keijiro/Lasp) project. Lasp's low latency audio processing(less than 16 ms) gives QuietVR its responsiveness and robustness which are much needed in VR environment to create the feeling of realism.
+
+Besides Lasp, QuietVR also uses third party 3d models and assets.
+
+The following is a full list of credits:
+
+1. [low poly head free! by hexonian(licensed under CC Attribution)](https://sketchfab.com/models/988a1ffdb6244eaab9b293d296c6e868#)
+2. [low poly space ship by chrisonciuconcepts(licensed under CC Attribution)](https://sketchfab.com/models/587941c9c11742c6b82dfb99e7b210b9)
+3. [Flamingo by ryemartin(licensed under CC Attribution)](https://sketchfab.com/models/237fc4e8ca004c83ae20a1db08e2e661#)
+4. [[3D Printable] Bricktown Low-Poly Collection #6 by Y3DS(licensed under CC Attribution)](https://sketchfab.com/models/a73486c6e6a640dc856ff6624ffeae97)
+5. 
 
 ## Artistic Design and Code Structure
 
 ## Future Roadmap and Possible Expansion
+
+## License
+
+QuietVR is an open source project under a MIT license which allows for third party modification and expansion.
