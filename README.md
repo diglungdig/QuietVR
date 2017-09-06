@@ -56,11 +56,11 @@ These summoned objects can stay around you as long as they don't get kicked out 
 
 Current build provides three categories of objects:
 
-1. **Basic geometry**, which is summoned by clicky sound.
+1. **Basic geometry**, which is summoned by clicky sound.(3 kinds in total)
 
-2. **Advanced 3D model**, which is summonned by continuous sound. You can at most have two of them simultaneously surrounding you.
+2. **Advanced 3D model**, which is summonned by continuous sound. You can at most have two of them simultaneously surrounding you.(18 kinds in total)
 
-3. **Animated creature**, which requires 30+ secs of continuous sound to trigger :) 
+3. **Animated creature**, which requires 30+ secs of continuous sound to trigger :) (2 kinds in total)
 
 ### Additional Commend
 
@@ -78,6 +78,9 @@ The following is a full list of credits:
 2. [low poly space ship by chrisonciuconcepts(licensed under CC Attribution)](https://sketchfab.com/models/587941c9c11742c6b82dfb99e7b210b9)
 3. [Flamingo by ryemartin(licensed under CC Attribution)](https://sketchfab.com/models/237fc4e8ca004c83ae20a1db08e2e661#)
 4. [[3D Printable] Bricktown Low-Poly Collection #6 by Y3DS(licensed under CC Attribution)](https://sketchfab.com/models/a73486c6e6a640dc856ff6624ffeae97)
+5. [Killer Whale by dandi(licensed under CC Attribution)](https://sketchfab.com/models/eb8079f41fe34550887f666a83173cdb)
+6. [Stingray by dandi(licensed under CC Attribution)](https://sketchfab.com/models/804378af005f4dc38ddc7355d3eb3779)
+7. Background Music by Tomppabeats - [You're Cute](https://www.youtube.com/watch?v=039QyF-zwWA)
 
 Various 3D model assets from Unity asset store were also used during the development of this project.
 
@@ -103,8 +106,29 @@ These classes can be found in Asset/-Scripts folder.
 
 Note: Quite a lot of these scripts are not well documented. Further documentation will be added as this project gets its update later on.
 
-## Future Roadmap and Possible Expansion
+## Limitation, Future Roadmap and Possible Expansion
+
+QuietVR currently is a simple demo with a less than 10 mins playthrough. It takes simple audio commends and generate 3D objects from a randomized predefined set. 
+
+Its whole purpose for now is to become a testground for audio reactive behavior in VR and further related implementation.
+
+The bigger picture might include things like:
+
+1. Voice recognition with VR.
+
+2. [Procedural content generation by audio input](https://creators.vice.com/en_us/article/8qvgbx/heres-how-you-turn-sounds-into-3d-sculptures) 
+
+3. Education in VR with voice and audio commends
+
+From a gameplay perspective, the following things might be added with future updates in a long run:
+
+1. Deeper analysis of audio input for expanding more sorts of audio commends
+
+2. Instead of pooling 3D objects locally, a dedicated backend server that will allow any third party users to upload their own 3D models and share across the platform.
+
+Short term speaking, things like customizable background music and better UI will also be implemented step by step.
 
 ## License
 
 QuietVR is an open source project under a MIT license which allows for third party modification and expansion.
+
