@@ -2,7 +2,7 @@
 > A quiet place in VR.
 
 
-![](https://github.com/diglungdig/QuietVR/blob/master/Screenshots/1.png  | width=100)
+![](https://github.com/diglungdig/QuietVR/blob/master/Screenshots/1.png)
 
 ## What is QuietVR
 
