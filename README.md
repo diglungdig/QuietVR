@@ -2,7 +2,7 @@
 > A quiet place in VR.
 
 
-[![solarized dualmode](https://github.com/diglungdig/QuietVR/Screenshots/1.png)](#features)
+[![QuietVR](https://github.com/diglungdig/QuietVR/blob/master/Screenshots/1.png)](#features)
 
 ## What is QuietVR
 
