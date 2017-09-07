@@ -1,6 +1,9 @@
 # QuietVR
 > A quiet place in VR.
 
+
+[![solarized dualmode](https://github.com/diglungdig/QuietVR/Screenshots/1.png)](#features)
+
 ## What is QuietVR
 
 A place in VR where only you should be the one to make noises. And when you do, your noises summon objects that will decorate your surrounding.
