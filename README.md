@@ -3,6 +3,15 @@
 
 ![QuietVR](https://github.com/diglungdig/QuietVR/blob/master/Screenshots/rsz_1.png)
 
+## Version 1.1
+Updates:
+    1. A countdown timer before each voice input
+    2. A title text
+    3. Restrcuturing, redesign and optimization on classes and codes
+    4. Minor improvements include things like disabling voice input when user is not facing at the indicator
+    5. Generic shapes in the scene now use a unlit color shader for simplitity
+    6. Voice input now can generate more special 3D models!
+
 ## What is QuietVR
 
 A place in VR where only you should be the one to make noises. And when you do, your noises summon objects that will decorate your surrounding.
@@ -82,7 +91,11 @@ The following is a full list of credits:
 4. [[3D Printable] Bricktown Low-Poly Collection #6 by Y3DS(licensed under CC Attribution)](https://sketchfab.com/models/a73486c6e6a640dc856ff6624ffeae97)
 5. [Killer Whale by dandi(licensed under CC Attribution)](https://sketchfab.com/models/eb8079f41fe34550887f666a83173cdb)
 6. [Stingray by dandi(licensed under CC Attribution)](https://sketchfab.com/models/804378af005f4dc38ddc7355d3eb3779)
-7. Background Music by Tomppabeats - [You're Cute](https://www.youtube.com/watch?v=039QyF-zwWA)
+7. [Duck(https://sketchfab.com/models/dbb3f5bcf7914454b283184c2b3c1571)] by Luvarv(https://sketchfab.com/luvarv) is licensed under CC Attribution(http://creativecommons.org/licenses/by/4.0/)
+8. [Low-poly veal - neutral pose(https://sketchfab.com/models/cb23c0e192cf4a378a35d39350009648)] by Didier Hannoir(https://sketchfab.com/dhannoir) is licensed under CC Attribution-ShareAlike(http://creativecommons.org/licenses/by-sa/4.0/)
+9. [Octopus(https://sketchfab.com/models/f791893db35147a5bba081c7b04af8db)] by yifatshaik(https://sketchfab.com/yifatshaik) is licensed under CC Attribution(http://creativecommons.org/licenses/by/4.0/)
+10. 
+Background Music by Tomppabeats - [You're Cute](https://www.youtube.com/watch?v=039QyF-zwWA)
 
 Various 3D model assets from Unity asset store were also used during the development of this project.
 

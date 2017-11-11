@@ -2,26 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomObject : MonoBehaviour {
+public class RoomObject : MonoBehaviour
+{
     [SerializeField]
     public bool UseRotate = true;
-
     public Transform RotateAround;
-
-    
     public float Speed = 2f;
 
     [SerializeField]
     private bool UseSelfRotate = true;
 
-    public float lifecycle = 0f;
+    public float lifecycle;
     public float FadeSpeed = 0.3f;
     public bool faceCamera = false;
+    public RoomobjectType type = RoomobjectType.basic;
 
-
-    private Color color;
-    private Color FadeInColor;
-    private Color FadeOutColor;
     [SerializeField]
     private Renderer ren;
 
@@ -54,55 +49,73 @@ public class RoomObject : MonoBehaviour {
     public virtual void SetLifeCycle(float value, Vector3 pos, Transform origin)
     {
         RotateAround = origin;
+        if (type == RoomobjectType.advanced)
+        {
+            transform.localScale = Vector3.zero;
+        }
         transform.position = pos;
-        transform.Rotate(Random.value* new Vector3(30, 40, 100));
+        transform.Rotate(Random.value * new Vector3(30, 40, 100));
         Speed = Random.Range(2f, 4f);
         lifecycle = value;
-        color = ren.material.color;
-        color = new Color(color.r, color.g, color.b, 0f);
-        FadeInColor = new Color(color.r, color.g, color.b, 0.8f);
-        FadeOutColor = new Color(color.r, color.g, color.b, 0f);
-        ren.material.SetColor("_Color", color);
-        StartCoroutine(FadeIn());
+        StartCoroutine(In());
     }
 
 
-    public IEnumerator FadeIn()
+    public IEnumerator In()
     {
-        color = ren.material.color;
-        while (ren.material.color.a < 0.9f)
+        gameObject.SetActive(true);
+
+        if (type == RoomobjectType.basic)
         {
-            color = Color.Lerp(color, FadeInColor, FadeSpeed * Time.deltaTime);
+            for (float t = 0; t < 1; t += Time.deltaTime / 2)
+            {
+                transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, t);
+                yield return null;
+            }
+            transform.localScale = Vector3.one;
 
-            ren.material.SetColor("_Color",color);
+        }
+        else if (type == RoomobjectType.advanced)
+        {
+            for (float t = 0; t < 1; t += Time.deltaTime / 2)
+            {
+                transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, t);
+                yield return null;
+            }
+            transform.localScale = Vector3.one;
 
-            yield return null;
         }
     }
-    public IEnumerator FadeOut()
+    public IEnumerator Out()
     {
-        color = ren.material.color;
-
-
-        while (ren.material.color.a > 0.1f)
+        if (type == RoomobjectType.basic)
         {
-            color = new Color(color.r, color.g, color.b, color.a - FadeSpeed * Time.deltaTime);
-            ren.material.SetColor("_Color", color);
-
-            yield return null;
+            for (float t = 0; t < 1; t += Time.deltaTime / 1)
+            {
+                transform.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, t);
+                yield return null;
+            }
+            transform.localScale = Vector3.zero;
         }
+        else if (type == RoomobjectType.advanced)
+        {
+            for (float t = 0; t < 1; t += Time.deltaTime / 1)
+            {
+                transform.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, t);
+                yield return null;
+            }
+            transform.localScale = Vector3.zero;
+        }
+
         gameObject.SetActive(false);
-        transform.parent.GetComponent<ObjectManager>().ObjectRebirth();
     }
+
 
     public virtual void FixedUpdate()
     {
-
-
         if (UseRotate && RotateAround != null)
         {
-            transform.RotateAround(RotateAround.position, Vector3.up, -1*Speed * Time.deltaTime);
-
+            transform.RotateAround(RotateAround.position, Vector3.up, -1 * Speed * Time.deltaTime);
         }
 
         if (UseSelfRotate)
@@ -112,19 +125,24 @@ public class RoomObject : MonoBehaviour {
 
         lifecycle -= Time.deltaTime;
 
-        if(lifecycle <= 0)
+        if (lifecycle <= 0)
         {
-            StartCoroutine(FadeOut());
-            lifecycle = 10000;
+            StartCoroutine(Out());
         }
 
         if (faceCamera)
         {
             transform.LookAt(Camera.main.transform);
         }
-        
+
     }
 
+}
+
+public enum RoomobjectType
+{
+    basic,
+    advanced
 }
 
 

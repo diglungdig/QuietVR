@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Quiet : MonoBehaviour {
 
@@ -11,10 +12,13 @@ public class Quiet : MonoBehaviour {
     public RuntimeAnimatorController animator;
     public Transform SummonTransform;
 
-    public ObjectManager PrimitveShapeManager;
+    public ObjectManager GenericShapeManager;
     public ObjectManager SpecialObjectManager;
     public ObjectManager SurpriseManager;
-
+    public Transform Origin;
+    public GameObject CircleBorder;
+    public GameObject VoiceRipple;
+    public Text CountdownText;
 
     private bool Lock = false;
     private bool InnerLock = false;
@@ -32,15 +36,13 @@ public class Quiet : MonoBehaviour {
     private float AudioGapOffsetCached = 0.2f;
     [SerializeField]
     private float CountTimer = 0f;
-
+    private float CachedTimer = 0f;
     //Events
     public delegate void QuietEvent();
     public static event QuietEvent FingerSnap;
     public static event QuietEvent Yelled;
-
     public static event QuietEvent Yelling;
     public static event QuietEvent NoSound;
-    
 
     void Awake()
     {
@@ -52,8 +54,6 @@ public class Quiet : MonoBehaviour {
         if (Instance == this)
             Instance = null;
     }
-
-
 
     public float KlakHandle {
 
@@ -97,6 +97,7 @@ public class Quiet : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         AudioGapOffset = AudioGapOffsetCached;
+        CachedTimer = CountTimer;
 	}
 
 
@@ -109,11 +110,43 @@ public class Quiet : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate () {
 
-        if (!Lock)
+        bool Facing = FacingCamera(0.05F);
+
+        if (Lock)
         {
-            TestOnAudioInput();
+            CircleBorder.SetActive(false);
+        }
+        else
+        {
+            if (Facing)
+            {
+                TestOnAudioInput();
+                //enable visuals
+                CircleBorder.SetActive(true);
+                VoiceRipple.SetActive(true);
+            }
+            else
+            {
+                CircleBorder.SetActive(false);
+                VoiceRipple.SetActive(false);
+            }
         }
 	}
+
+   /// <summary>
+   /// Check if the camera is facing at the origin
+   /// </summary>
+   /// <param name="bias"></param>
+   /// <returns></returns>
+    bool FacingCamera(float bias)
+    {
+        if(Vector3.Dot(Camera.main.transform.forward, Origin.forward) < (-1f + bias))
+        {
+            return true;
+        }
+        return false;
+    }
+    
 
     void TestOnAudioInput()
     {
@@ -127,8 +160,6 @@ public class Quiet : MonoBehaviour {
                 TimeStamp = Time.time;
             }
             InnerLock = true;
-            Debug.Log("0.8 ----------->");
-
 
             AudioGapOffset = AudioGapOffsetCached;
 
@@ -137,7 +168,6 @@ public class Quiet : MonoBehaviour {
         }
         else
         {
-
             //Fall off
             if(TimeStamp > 0f && AudioGapOffset <= 0f)
             {
@@ -191,15 +221,17 @@ public class Quiet : MonoBehaviour {
             {
                 o.GetComponent<MeshRenderer>().material.color = new Color(Random.value, Random.value, Random.value);
             }
-            StartCoroutine(SendObjectAndReleaseLock(o, PrimitveShapeManager));
+            StartCoroutine(SendObjectAndReleaseLock(o, GenericShapeManager));
         }
-        else if(duration >= 30f)
+        else if(duration >= 10f)
         {
-            SurpriseManager.ObjectRebirth();
+            SurpriseManager.Rebirth();
+            
             Lock = false;
         }
         else
         {
+            //Special objects for yelling
             o = Instantiate(AdvancedObject[Random.Range(0, AdvancedObject.Count)], SummonTransform.position + new Vector3(0f, 0f, -1f), Quaternion.identity);
             o.AddComponent<Animator>().runtimeAnimatorController = animator;
             StartCoroutine(SendObjectAndReleaseLock(o, SpecialObjectManager));
@@ -210,16 +242,28 @@ public class Quiet : MonoBehaviour {
     IEnumerator SendObjectAndReleaseLock(GameObject o, ObjectManager manager)
     {
         //Let player take a good look at the object
-        yield return new WaitForSeconds(7f);
+        yield return new WaitForSeconds(6f);
 
         Destroy(o.GetComponent<Animator>());
 
         //Send Object to Object Manager
         manager.ReceiveObject(o);
 
-        //Give it a wait
-        yield return new WaitForSeconds(3f);
-        
+        //Give it a wait.
+        //TODO Here we should add a countdown timer UI for buffering 
+
+        yield return new WaitForSeconds(1.5f);
+
+        CountdownText.enabled = true;
+        while (CountTimer >= 0f)
+        {
+            CountdownText.text = Mathf.RoundToInt(CountTimer).ToString();
+            CountTimer -= Time.deltaTime;
+            yield return null;
+        }
+        CountdownText.enabled = false;
+        CountTimer = CachedTimer;
+
         //Release the lock
         Lock = false;
     }

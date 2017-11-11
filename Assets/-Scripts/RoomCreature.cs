@@ -21,7 +21,7 @@ public class RoomCreature : RoomObject {
         lifecycle -= Time.deltaTime;
         if (lifecycle <= 0)
         {
-            StartCoroutine(FadeOut());
+            StartCoroutine(Out());
             lifecycle = 10000;
         }
 
