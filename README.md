@@ -5,12 +5,17 @@
 
 ## Version 1.1
 Updates:
-    1. A countdown timer before each voice input
-    2. A title text
-    3. Restrcuturing, redesign and optimization on classes and codes
-    4. Minor improvements include things like disabling voice input when user is not facing at the indicator
-    5. Generic shapes in the scene now use a unlit color shader for simplitity
-    6. Voice input now can generate more special 3D models!
+**1.** A countdown timer before each voice input
+
+**2.** A title text
+
+**3.** Restrcuturing, redesign and optimization on classes and codes
+
+**4.** Minor improvements include things like disabling voice input when user is not facing at the indicator
+
+**5.** Generic shapes in the scene now use a unlit color shader for simplitity
+
+**6.** Voice input now can generate more special 3D models!
 
 ## What is QuietVR
 
