@@ -1,25 +1,13 @@
 # QuietVR
 > A quiet place in VR.
 
-![QuietVR](https://github.com/diglungdig/QuietVR/blob/master/Screenshots/rsz_1.png)
+![QuietVR](https://github.com/diglungdig/QuietVR/blob/master/Screenshots/QuietVRDemo.gif)
 
-## Version 1.1
-Updates:
-**1.** A countdown timer before each voice input
-
-**2.** A title text
-
-**3.** Restrcuturing, redesign and optimization on classes and codes
-
-**4.** Minor improvements include things like disabling voice input when user is not facing at the indicator
-
-**5.** Generic shapes in the scene now use a unlit color shader for simplitity
-
-**6.** Voice input now can generate more special 3D models!
+Please go to the end of this README for version update logs
 
 ## What is QuietVR
 
-A place in VR where only you should be the one to make noises. And when you do, your noises summon objects that will decorate your surrounding.
+QuietVR is an experimental demo of VR interaction via voice input. It connects audio recognition interfaces with Google’s newly introduced Poly Api.
 
 ## Inspiration and Motivation
 
@@ -27,7 +15,7 @@ This project is inspired by Armin van Buuren's YouTube video of [Intense](https:
 
 The initial thought was to create a simple VR experience where the player is surrounded by blocks and low polygon geometries. After a few iterations of implementation, it eventually turns into VR demo that focuses on audio reactive interaction.
 
-The whole purpose of this project from a development perspective is to seek harmonic correlation between VR and audio input and how to create fun VR gameplay with simple vocal elements.
+The whole purpose of this project from a development perspective is to implement a harmonic coordination between VR and audio input, creating fun VR gameplay with simple vocal elements.
 
 ## Installation
 
@@ -37,7 +25,7 @@ https://github.com/diglungdig/QuietVR/releases
 
 Each release contains a VR version that works with HTC Vive/Oculus Rift and a non-VR version that works with normal PC setups.
 
-Please note that it's recommended to play in VR just like beer has to be put into fridge to be good.
+It's recommended to play in VR.
 
 ## System Requirement and Specification
   
@@ -50,75 +38,70 @@ VR version works with HTC Vive and Ocules Rift CV1.
 Audio recording device is required in order to play QuietVR.
 
 ## How to Play
-**QuietVR requires a quiet environment to start with.** 
 
 ### Setup
-If you are not in a peaceful place, gameplay will most likely be disrupted for game's solely relying on audio input. 
 
-Make sure you have your audio recording device like microphone set up before start the game.
+Currently QuietVR can only be run on Windows. MacOS is not supported.
+
+QuietVR uses Windows’ speech recognition feature. [To enable it on your OS,  go to Speech, inking & typing on your Windows 10 Settings, then turn on speech services and typing suggestions.](https://privacy.microsoft.com/en-us/windows-10-speech-inking-typing-and-privacy-faq)
+
+It’s better to play this demo in a quiet environment. Otherwise gameplay will most likely be disrupted for game's solely relying on audio input. Make sure you have your audio recording device like microphone or headset set up before start the game.
+
 
 ### Game Mechanics
-QuietVR currently allows for two kinds of audio input behavior:
 
-1. **Clicky sound**(behaviors like fingersnap)
+QuietVR currently has two modes. Each of these modes support different kinds of voice input behaviors.
 
-2. **Continuous sound**(behaviors like yelling or singing)
+**[Search Mode]:** 
+Search Mode takes advantage of Windows Speech Recognition feature to communicate with Google’s Poly server.
+In this mode, you are given the option to request a 3D model via voice command.
+To initialize requesting process,
+Make sure you have your environment setup ready(See the above section).
+Towards your microphone, say “Quiet”
+Then, say a word representing an object you want to fetch from the server(“Elephant”, “Pizza”, “Book”, etc)
+If the process succeeds, you should see your object pop in front of you.
 
-When entering the game, look for a white circle in the sky which serves as an indicator for your audio input.
+**[Random Mode]:**
+Random mode is first introduced in QuietVR version 1.0(the OG mode so to speak :D). It uses Keijiro Takahashi’s Lasp((Low-latency Audio Signal Processing plugin for Unity) to give responsive voice feedbacks to the user.
+In this mode, you are given the option to...yell...as long as you want. An object will be fetched after your voice falls off.
 
-The white circle can summon various objects based on the audio input behavior you provide as described above.
 
-These summoned objects can stay around you as long as they don't get kicked out by the later ones.
+### Additional Commends
 
-Current build provides three categories of objects:
+1. To exit the game, press ESC on keyboard.
 
-1. **Basic geometry**, which is summoned by clicky sound.(3 kinds in total)
-
-2. **Advanced 3D model**, which is summonned by continuous sound. You can at most have two of them simultaneously surrounding you.(18 kinds in total)
-
-3. **Animated creature**, which requires 30+ secs of continuous sound to trigger :) (2 kinds in total)
-
-### Additional Commend
-
-To exit the game, press ESC on keyboard.
+2. Press Space on keyboard to switch between two modes.
 
 ## Credits and Acknowledgement
 
-Currently, QuietVR's core functionality of audio input processing relies on the famous Japanese visualization artist and Unity engineer Keijiro Takahashi's [Lasp](https://github.com/keijiro/Lasp) project. Lasp's low latency audio processing(less than 16 ms) gives QuietVR its responsiveness and robustness which are much needed in VR environment to create the feeling of realism.
+For its use of Google's Poly Api, all of the 3D models appearing in the game are basically from Google's community(Tiltbrush, Google Blocks, etc). The majority of these 3D resources have the Creaive Commons License. 
+**Game gives credits to these amazing authors by printing out the credit in the back of the player right after the 3D object appears in front.**
 
-Besides Lasp, QuietVR also uses third party 3d models and assets.
+QuietVR also relies on the famous Japanese visualization artist and Unity engineer Keijiro Takahashi's [Lasp](https://github.com/keijiro/Lasp) project to update the visual cue when listening to voice input. Lasp's low latency audio processing(less than 16 ms) gives QuietVR its responsiveness and robustness which are much needed in VR environment to create the feeling of realism.
 
-The following is a full list of credits:
-
-1. [low poly head free! by hexonian(licensed under CC Attribution)](https://sketchfab.com/models/988a1ffdb6244eaab9b293d296c6e868#)
-2. [low poly space ship by chrisonciuconcepts(licensed under CC Attribution)](https://sketchfab.com/models/587941c9c11742c6b82dfb99e7b210b9)
-3. [Flamingo by ryemartin(licensed under CC Attribution)](https://sketchfab.com/models/237fc4e8ca004c83ae20a1db08e2e661#)
-4. [[3D Printable] Bricktown Low-Poly Collection #6 by Y3DS(licensed under CC Attribution)](https://sketchfab.com/models/a73486c6e6a640dc856ff6624ffeae97)
-5. [Killer Whale by dandi(licensed under CC Attribution)](https://sketchfab.com/models/eb8079f41fe34550887f666a83173cdb)
-6. [Stingray by dandi(licensed under CC Attribution)](https://sketchfab.com/models/804378af005f4dc38ddc7355d3eb3779)
-7. [Duck(https://sketchfab.com/models/dbb3f5bcf7914454b283184c2b3c1571)] by Luvarv(https://sketchfab.com/luvarv) is licensed under CC Attribution(http://creativecommons.org/licenses/by/4.0/)
-8. [Low-poly veal - neutral pose(https://sketchfab.com/models/cb23c0e192cf4a378a35d39350009648)] by Didier Hannoir(https://sketchfab.com/dhannoir) is licensed under CC Attribution-ShareAlike(http://creativecommons.org/licenses/by-sa/4.0/)
-9. [Octopus(https://sketchfab.com/models/f791893db35147a5bba081c7b04af8db)] by yifatshaik(https://sketchfab.com/yifatshaik) is licensed under CC Attribution(http://creativecommons.org/licenses/by/4.0/)
-10. 
 Background Music by Tomppabeats - [You're Cute](https://www.youtube.com/watch?v=039QyF-zwWA)
-
-Various 3D model assets from Unity asset store were also used during the development of this project.
 
 ## Artistic Design and Code Structure
 
 ### Artisitic Design
 
-The artistic design of QuietVR follows the code of minimalism. The 3D assets that exist in the game are mostly of low polygon counts.
+The artistic design of QuietVR follows the code of minimalism. 
 
-The post processing techniques that are used in game are [sun shafts](https://docs.unity3d.com/550/Documentation/Manual/script-SunShafts.html), [bloom](https://docs.unity3d.com/550/Documentation/Manual/script-Bloom.html), and [color grading](https://docs.unity3d.com/Manual/PostProcessing-ColorGrading.html).
+Shader for generic objects used in the game is a simple vertex color shader. 
 
-QuietVR uses Unity's standard shader to create fade in/out effect on objects in game.
+The post processing techniques that are used in game are from [Unity's Post Processing Stack](https://github.com/Unity-Technologies/PostProcessing).
 
 ### Scripts
 
-QuietVR's core behaviors are implemented in Quiet.cs, ObjectManager.cs and RoomObject.cs three classes.  
+QuietVR's core behaviors are implemented in Quiet.cs(child class of PolyVRPort.cs), CommandRecognition.cs, and PolyManager.cs.  
 
-Quiet.cs communicates with Lasp and gives signal to ObjectManager. ObjectManager receives the signal and instantiate/pooling 3D objects accordingly. RoomObject.cs controls the rotation of objects.
+PolyVRPort.cs is a singleton abstract class set to coordinate between voice responsive interfaces, like Windows Speech and Lasp, and Google's Poly Api. It has serveral abstract functions that are crucial for the process.
+
+Quiet.cs is a derived child class from PolyVRPort.cs. Besides overriding functions from parent class and hooking up interfaces, it also coordinates all the cosmetics and event triggering for the game.
+
+CommandRecognition.cs uses Windows.Speech's KeywordRecognizer and DictationRecognizer to allow for voice command input. The voice command follows the format of "Quiet"(Keyword) + Content(Dictation).
+
+PolyManager.cs, as the name suggests, communicates with Poly Api and gives feedback to PolyVRPort.cs
 
 The visual effect of audio reactive white circle is implemented in VoiceRipple.cs.
 
@@ -128,13 +111,11 @@ Note: Quite a lot of these scripts are not well documented. Further documentatio
 
 ## Limitation, Future Roadmap and Possible Expansion
 
-QuietVR currently is a simple demo with a less than 10 mins playthrough. It takes simple audio commends and generate 3D objects from a randomized predefined set. 
-
-Its whole purpose for now is to become a testground for audio reactive behavior in VR and further related implementation.
+QuietVR's purpose for now is to become a testground for audio reactive behavior in VR and further related implementation.
 
 The bigger picture might include things like:
 
-1. Voice recognition with VR.
+1. ~~Voice recognition with VR(implemented in version 2.0. However I'm thinking about migrating from the sloppy Windows Speech to IBM Speech Sandbox)~~.
 
 2. [Procedural content generation by audio input](https://creators.vice.com/en_us/article/8qvgbx/heres-how-you-turn-sounds-into-3d-sculptures) 
 
@@ -144,11 +125,41 @@ From a gameplay perspective, the following things might be added with future upd
 
 1. Deeper analysis of audio input for expanding more sorts of audio commends
 
-2. Instead of pooling 3D objects locally, a dedicated backend server that will allow any third party users to upload their own 3D models and share across the platform.
+2. ~~Instead of pooling 3D objects locally, a dedicated backend server that will allow any third party users to upload their own 3D models and share across the platform.(implemented in version 2.0 via Google Poly)~~
 
-Short term speaking, things like customizable background music and better UI will also be implemented step by step.
 
 ## License
 
 QuietVR is an open source project under a MIT license which allows for third party modification and expansion.
+
+**Because QuietVR uses Google Poly Api, you need to have a Api key in order to work within the Unity environment. A detailed instruction on how to obtain and insert the key can be found [here](https://developers.google.com/poly/develop/unity).** 
+
+
+## Update Logs
+
+### Version 2.0
+Updates:
+**1.** Google Poly Api integration. Program now pulls 3D models at runtime from Google Poly.
+
+**2.** A new mode "Search Mode" has been added. In this mode, user can use voice recogition to fetch 3D models.
+
+**3.** A new program logo
+
+**4.** Various minor comestics updates
+
+
+### Version 1.1
+Updates:
+
+**1.** A countdown timer before each voice input
+
+**2.** A title text
+
+**3.** Restrcuturing, redesign and optimization on classes and codes
+
+**4.** Minor improvements include things like disabling voice input when user is not facing at the indicator
+
+**5.** Generic shapes in the scene now use a unlit color shader for simplitity
+
+**6.** Voice input now can generate more special 3D models!
 

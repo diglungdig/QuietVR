@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 5d48409aca0786e43a12e895f7bd11f5
+timeCreated: 1513031632
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Wedgie
+  fontNames:
+  - Wedgie
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 6aadcd450e76629479482b606a49529d, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

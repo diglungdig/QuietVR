@@ -63,7 +63,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _EmissionGain: 0.08
+    - _EmissionGain: 0.03
     - _EmissionTextureContrast: 1
     - _GlossMapScale: 1
     - _Glossiness: 0.5
@@ -82,4 +82,4 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DiffuseColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0.2647059, b: 0.111359015, a: 1}
-    - _TintColor: {r: 0.2277249, g: 0.7941176, b: 0.70036983, a: 0.653}
+    - _TintColor: {r: 0.38219777, g: 0.9411765, b: 0.2768166, a: 0.666}

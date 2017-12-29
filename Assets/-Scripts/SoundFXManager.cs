@@ -4,25 +4,38 @@ using UnityEngine;
 
 public class SoundFXManager : MonoBehaviour {
 
+    public static SoundFXManager Instance;
     public AudioClip clip1;
-    public AudioClip clip2;
+    public AudioSource BackgroundMusic;
 
+    void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+    }
+    void OnDestroy()
+    {
+        if (Instance == this)
+            Instance = null;
+    }
 
 	// Use this for initialization
 	void Start () {
-        Quiet.FingerSnap += PlayAudio1;
-        Quiet.Yelled += PlayAudio2;
+        Quiet.PopsOut += PopsOutExplosion;
     }
 
-    private void PlayAudio1()
+    private void PopsOutExplosion()
     {
         GetComponent<AudioSource>().clip = clip1;
         GetComponent<AudioSource>().Play();
     }
-    private void PlayAudio2()
-    {
-        GetComponent<AudioSource>().clip = clip2;
-        GetComponent<AudioSource>().Play();
-    }
 
+    public void PauseMusic()
+    {
+        BackgroundMusic.Pause();
+    }
+    public void ResumeMusic()
+    {
+        BackgroundMusic.UnPause();
+    }
 }

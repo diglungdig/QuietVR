@@ -5,7 +5,18 @@ using UnityEngine.UI;
 
 
 public class VoiceRipple : Ripple {
-    
+
+    public static VoiceRipple Instance;
+
+    public ParticleSystem MajorParticleSys;
+    public ParticleSystem ParticleSys1;
+    public ParticleSystem ParticleSys2;
+
+    public ParticleSystem LoadingParticle;
+
+    public GameObject RippleCircleBorder;
+
+    private ParticleSystem.EmissionModule em;
 
     [SerializeField]
     private Vector3 Offset;
@@ -19,13 +30,48 @@ public class VoiceRipple : Ripple {
     private float BloomEmissionValue1 = 0.08f;
     [SerializeField]
     private float BloomEmissionValue2 = 0.53f;
+    [SerializeField]
+    private Image image;
+    [SerializeField]
+    private Quiet quiet;
 
     private bool RippleLock = false;
 
-    private void Awake()
+    void Awake()
     {
-        Quiet.Yelled += OverBloom;
-        Quiet.FingerSnap += ScaleToZero;
+        if (Instance == null)
+            Instance = this;
+
+        Quiet.PopsOut += ActivateParticleSystem;
+        Quiet.PopsOut += ScaleToZero;
+
+        Quiet.Yelling += YellingParticle;
+        Quiet.Mute += NoParticle;
+
+    }
+    void OnDestroy()
+    {
+        if (Instance == this)
+            Instance = null;
+    }
+
+    public void ActivateParticleSystem()
+    {
+        ParticleSys1.GetComponent<ParticleSystem>().Play();
+        ParticleSys2.GetComponent<ParticleSystem>().Play();
+    }
+
+    public void YellingParticle()
+    {
+        var emit = MajorParticleSys.emission;
+        emit.rateOverTime = 5f;
+    }
+
+
+    public void NoParticle()
+    {
+        var emit = MajorParticleSys.emission;
+        emit.rateOverTime = 0f;
     }
 
 
@@ -42,21 +88,46 @@ public class VoiceRipple : Ripple {
         {
             Debug.LogError("This is null");
         }
+
+        em = LoadingParticle.emission;
     }
 
     // Update is called once per frame
     public override void Update()
     {
-        if (!Quiet.Instance.LockHandle)
+
+        RippleCircleBorder.SetActive(quiet.ProcessingLockHandle);
+
+        if (!quiet.LockHandle && quiet.Mode == Quiet.QuietMode.RandomMode)
         {
-            KlakValue = Quiet.Instance.KlakHandle;
+            KlakValue = quiet.KlakHandle;
             //lerp the scale and the color
             transform.localScale = Vector3.Lerp(transform.localScale, KlakValue * LocalScale, Time.deltaTime * Speed) + Offset;
         }
+        else if(quiet.LockHandle && quiet.Mode == Quiet.QuietMode.SearchMode && quiet.ProcessingLockHandle)
+        {
+            KlakValue = quiet.KlakHandle;
+            //lerp the scale and the color
+            transform.localScale = Vector3.Lerp(transform.localScale, KlakValue * LocalScale, Time.deltaTime * Speed) + Offset;
+         }
 
-            
+        if (quiet.TimeStampHandle > 0f)
+        {
+            image.color = Color.green;
+        }
+        else
+        {
+            image.color = Color.white;
+        }
     }
 
+    public void SetCircleBorderActive(bool active)
+    {
+        if (RippleCircleBorder != null)
+        {
+            RippleCircleBorder.SetActive(active);
+        }
+    }
 
     public void ScaleToZero()
     {
@@ -79,7 +150,7 @@ public class VoiceRipple : Ripple {
             mat.SetFloat("_EmissionGain", temp);
             yield return null;
         }
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
         while (temp > BloomEmissionValue1)
         {
             temp -= Time.deltaTime * 2.5f;
