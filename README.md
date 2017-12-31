@@ -79,7 +79,7 @@ For its use of Google's Poly Api, all of the 3D models appearing in the game are
 
 QuietVR also relies on the famous Japanese visualization artist and Unity engineer Keijiro Takahashi's [Lasp](https://github.com/keijiro/Lasp) project to update the visual cue when listening to voice input. Lasp's low latency audio processing(less than 16 ms) gives QuietVR its responsiveness and robustness which are much needed in VR environment to create the feeling of realism.
 
-Background Music by Tomppabeats - [You're Cute](https://www.youtube.com/watch?v=039QyF-zwWA)
+Background Music by Bill Evans - Waltz For Debby
 
 ## Artistic Design and Code Structure
 

@@ -31,10 +31,10 @@ public class PolyManager : MonoBehaviour
         DescriptionText.text = "Requesting...";
         PolyListAssetsRequest request = new PolyListAssetsRequest();
         request.keywords = word;
-        request.curated = true;
+        //request.curated = true;
         request.orderBy = PolyOrderBy.BEST;
-        request.maxComplexity = PolyMaxComplexityFilter.MEDIUM;
-        //request.formatFilter = PolyFormatFilter.BLOCKS;
+        request.maxComplexity = PolyMaxComplexityFilter.UNSPECIFIED;
+        request.formatFilter = PolyFormatFilter.BLOCKS;
 
         PolyApi.ListAssets(request, MyListAssetCallback);
     }
