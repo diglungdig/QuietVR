@@ -137,6 +137,10 @@ QuietVR is an open source project under a MIT license which allows for third par
 
 ## Update Logs
 
+### Version 2.01
+Updates:
+**1.** New background music by Bill Evans and better VFXs
+
 ### Version 2.0
 Updates:
 **1.** Google Poly Api integration. Program now pulls 3D models at runtime from Google Poly.
