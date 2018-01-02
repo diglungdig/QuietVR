@@ -137,6 +137,10 @@ QuietVR is an open source project under a MIT license which allows for third par
 
 ## Update Logs
 
+### Version 2.02
+Updates:
+**1.** Fixed UI bugs
+
 ### Version 2.01
 Updates:
 **1.** New background music by Bill Evans and better VFXs
