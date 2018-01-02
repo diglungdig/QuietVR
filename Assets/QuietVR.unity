@@ -360,7 +360,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1501134159}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65055de16f401974691b496d6c9d4682, type: 3}
   m_Name: 
@@ -380,6 +380,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114417963288368908, guid: 5ca7546ffeb891b44bcf2f746682567e,
+        type: 2}
+      propertyPath: m_Keywords.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4073402659364848, guid: 5ca7546ffeb891b44bcf2f746682567e, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -444,6 +449,26 @@ Prefab:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 62d65c321b28c844797d81160951504c, type: 3}
+    - target: {fileID: 114417963288368908, guid: 5ca7546ffeb891b44bcf2f746682567e,
+        type: 2}
+      propertyPath: m_Keywords.Array.data[0]
+      value: Quiet
+      objectReference: {fileID: 0}
+    - target: {fileID: 114115843681298132, guid: 5ca7546ffeb891b44bcf2f746682567e,
+        type: 2}
+      propertyPath: ThreholdToStartCounting
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114115843681298132, guid: 5ca7546ffeb891b44bcf2f746682567e,
+        type: 2}
+      propertyPath: AudioGapOffset
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114115843681298132, guid: 5ca7546ffeb891b44bcf2f746682567e,
+        type: 2}
+      propertyPath: AudioGapOffsetCached
+      value: 0.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5ca7546ffeb891b44bcf2f746682567e, type: 2}
   m_IsPrefabParent: 0

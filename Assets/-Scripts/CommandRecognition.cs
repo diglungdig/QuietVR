@@ -14,12 +14,11 @@ using UnityEngine.Windows.Speech;
 /// </summary>
 public class CommandRecognition : MonoBehaviour {
 
+    //Static variables
     [SerializeField]
     private float AutoSilenceTimer = 2f;
     [SerializeField]
     private string[] m_Keywords;
-
-    //Static variables
     [SerializeField]
     public static string HypoString = "";
     [SerializeField]
@@ -46,15 +45,32 @@ public class CommandRecognition : MonoBehaviour {
     public static event CommandEvent TimeOutTrigger;
     public static event CommandEvent CommandTrigger;
 
-    private void OnDisable()
+    /// <summary>
+    /// These following three functions are used for garbege collections and initialization
+    /// </summary>
+    private void OnApplicationQuit()
     {
+        //GC
         m_DictationRecognizer.Dispose();
         m_KeywordRecognizer.Dispose();
     }
 
+    public static void DisableRecogition()
+    {
+        VoiceRecognitionGotResult = false;
+        m_DictationRecognizer.Stop();
+        m_KeywordRecognizer.Stop();
+    }
+
+    public static void StartKeywordListening()
+    {
+        VoiceRecognitionGotResult = false;
+        m_KeywordRecognizer.Start();
+    }
     void Start () {
-        //Set up both Recognizers
-        //First, Dictation
+
+        //Setting up Dictation here
+        //Settign up Keyword in OnEnable method
         m_DictationRecognizer = new DictationRecognizer();
 
         m_DictationRecognizer.AutoSilenceTimeoutSeconds = AutoSilenceTimer;
@@ -108,17 +124,12 @@ public class CommandRecognition : MonoBehaviour {
             Debug.LogWarningFormat("Dictation error: {0}; HResult = {1}.", error, hresult);
         };
 
-        //Keyword
+
         m_KeywordRecognizer = new KeywordRecognizer(m_Keywords);
         m_KeywordRecognizer.OnPhraseRecognized += OnPhraseRecognized;
-
     }
 
-    public static void StartKeywordListening()
-    {
-        VoiceRecognitionGotResult = false;
-        m_KeywordRecognizer.Start();
-    }
+
 
     private void OnPhraseRecognized(PhraseRecognizedEventArgs args)
     {
@@ -142,6 +153,7 @@ public class CommandRecognition : MonoBehaviour {
 
     IEnumerator OnRestartCommandRecognition()
     {
+        m_DictationRecognizer.Stop();
         while (m_DictationRecognizer.Status == SpeechSystemStatus.Running)
         {
             Debug.Log("SHITZ STILL RUNNING");
@@ -149,9 +161,7 @@ public class CommandRecognition : MonoBehaviour {
         }
 
         Debug.Log("Not Running anymore");
-        m_KeywordRecognizer.Dispose();
-        m_KeywordRecognizer = new KeywordRecognizer(m_Keywords);
-        m_KeywordRecognizer.OnPhraseRecognized += OnPhraseRecognized;
+        m_KeywordRecognizer.Stop();
     }
 
     #region DEBUG

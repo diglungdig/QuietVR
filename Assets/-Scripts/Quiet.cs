@@ -165,6 +165,7 @@ public class Quiet : PolyVRPort {
                 if (Mode == QuietMode.SearchMode)
                 {
                     Mode = QuietMode.RandomMode;
+                    CommandRecognition.DisableRecogition();
                     StartCoroutine(SkyboxColorChanging(0.2f, 0.01f, SkyboxColor2, SkyboxColor1));
                 }
                 else
