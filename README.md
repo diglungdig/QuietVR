@@ -127,6 +127,11 @@ From a gameplay perspective, the following things might be added with future upd
 
 2. ~~Instead of pooling 3D objects locally, a dedicated backend server that will allow any third party users to upload their own 3D models and share across the platform.(implemented in version 2.0 via Google Poly)~~
 
+## Idea and advice collected from social media
+
+1. [Scribblenauts](https://www.youtube.com/watch?v=CmsomX8J9gw&t=282s)
+
+2. [Pictionary](https://en.wikipedia.org/wiki/Pictionary)
 
 ## License
 
