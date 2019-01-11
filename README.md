@@ -11,8 +11,6 @@ QuietVR is an experimental demo of VR interaction via voice input. It connects a
 
 ## Inspiration and Motivation
 
-This project is inspired by Armin van Buuren's YouTube video of [Intense](https://www.youtube.com/watch?v=6UoNXz0Ox-g).
-
 The initial thought was to create a simple VR experience where the player is surrounded by blocks and low polygon geometries. After a few iterations of implementation, it eventually turns into VR demo that focuses on audio reactive interaction.
 
 The whole purpose of this project from a development perspective is to implement a harmonic coordination between VR and audio input, creating fun VR gameplay with simple vocal elements.
