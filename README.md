@@ -7,7 +7,7 @@ Please go to the end of this README for version update logs
 
 ## What is QuietVR
 
-QuietVR is an experimental demo of VR interaction via voice input. It connects audio recognition interfaces with Google’s newly introduced Poly Api.
+QuietVR is an experimental demo of VR interaction via voice input. It connects audio recognition interfaces with Google’s newly introduced Poly Api. Here you can summon any 3D objects using your voice.
 
 ## Inspiration and Motivation
 
