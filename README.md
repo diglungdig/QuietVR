@@ -5,6 +5,10 @@
 
 Please go to the end of this README for version update logs
 
+## Important
+
+As of June 30, Poly was shut down by Google...This means QuietVR can no long talk to Poly's 3d model database. I will be looking at other options.
+
 ## What is QuietVR
 
 QuietVR is an experimental demo of VR interaction via voice input. It connects audio recognition interfaces with Google’s newly introduced Poly Api. Here you can summon any 3D objects using your voice.
