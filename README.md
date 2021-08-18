@@ -7,7 +7,7 @@ Please go to the end of this README for version update logs
 
 ## Important
 
-As of June 30, Poly was shut down by Google...This means QuietVR can no long talk to Poly's 3d model database. I will be looking at other options.
+As of June 30, ![Poly was shut down by Google](https://support.google.com/poly/answer/10192635)...This means QuietVR can no long talk to Poly's 3d model database. I will be looking at other options.
 
 ## What is QuietVR
 
